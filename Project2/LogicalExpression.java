@@ -85,6 +85,102 @@ public class LogicalExpression
 						}
 						System.out.println(sb);
       }
+			   public static void printTable(LogicalFunction p)
+		      {
+		            //Stringbuffer to store string and only spit it out once
+		      			StringBuffer sb = new StringBuffer();
+								StringBuffer line= new StringBuffer();
+								//Used O for true and X for false since its was easier to distinguish on output than t/f/T/F/0/1
+								String t="O";
+								String f="X";
+								String cp=p.toString();
+								Boolean a=false;
+								Boolean b=false;
+								Boolean c=false;
+								//Add - for box top
+								sb.append("--------");
+								sb.append("--------");
+								sb.append("-----");
+								//Add - equal to the length of p.toString() for pretty box
+								for(int z=0;z<cp.length();z++)
+								{
+									sb.append("-");
+								}
+								//Title Row
+								sb.append("\n|  p  ");
+								sb.append("|  q  ");
+								sb.append("|  r  |");
+								sb.append("  "+p.toString());
+								sb.append("\n");
+								//Loop to get all 9 possible combinations.
+								for(int i=1;i<9;i++)
+								{
+									sb.append("--------");
+									sb.append("--------");
+									sb.append("-----");
+									line.delete(0,line.length());
+									for(int z=0;z<cp.length();z++)
+									{
+										sb.append("-");
+									}
+									sb.append("\n");
+									sb.append("|  ");
+									//Last column (would be third bit in binary)
+									if(i>4)
+									{
+										a=true;
+										sb.append(t);
+									}
+									else
+									{
+										a=false;
+										sb.append(f);
+									}
+									sb.append("  |  ");
+									//Middle column (Second bit in binary)
+									if((((i+1)-((i+1)%2))/2)%2==0)
+									{
+										b=true;
+										sb.append(t);
+									}
+									else
+									{
+										b=false;
+										sb.append(f);
+									}
+									sb.append("  |  ");
+									//First column (first binary bit)
+									if((i+1)%2==0)
+									{
+										c=true;
+										sb.append(t);
+									}
+									else
+									{
+										c=false;
+										sb.append(f);
+									}
+									sb.append("  | ");
+									//Add padding to p.toString()
+									for(int l=0;l<cp.length()/2;l++)
+									{
+										sb.append(" ");
+									}
+									if(p.evaluate(a,b,c))
+									{
+										sb.append(t);
+									}
+									else
+									{
+										sb.append(f);
+									}
+									sb.append("  ");
+									sb.append("\n");
+
+								}
+								//Finally... Return!
+								System.out.println(sb);
+		      }
 			public static boolean tautology(LogicalFunction p)
 			{
 				Boolean a=false;
@@ -346,6 +442,8 @@ public class LogicalExpression
 				}
 				System.out.println("");
 				System.out.println("Test H");
+				System.out.println("Values that make P3 true:");
+				printTable(p3);
       }
 
 
