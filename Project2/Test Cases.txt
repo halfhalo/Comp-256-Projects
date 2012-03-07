@@ -1,3 +1,9 @@
+/*
+	Patrick Roberts
+	Comp 256
+	March 7,2012
+	Source code repo: https://github.com/halfhalo/Comp-256-Projects
+*/
 ➜  Project2 git:(master) ✗ javac LogicalExpressions.java; java LogicalExpressions
 Test A
 P1  = !q && ((p) || !(q)) && p

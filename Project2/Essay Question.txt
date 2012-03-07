@@ -1,2 +1,8 @@
+/*
+	Patrick Roberts
+	Comp 256
+	March 7,2012
+	Source code repo: https://github.com/halfhalo/Comp-256-Projects
+*/
 Modify Code to handle 1<=n<=100:
 	I would switch from using distinct p/q/r variables to an array of n length, and run the given P* function however many times it would take to handle all n inputs.  The methods that print tables would be the easiest to change, since I would just switch from using psuedo binary conversion to find the input for the given variable to real binary input.  IE if n was 5, the n[0] would be false false false false false, n[1] false false false false true, etc.
